@@ -3,18 +3,35 @@ import moment from 'moment';
 const data = [];
 
 export const registerPeer = ({ peerData }) => {
-    data.push({ peerData });
+    data.push({ ...peerData });
     return data;
 };
 
-export const getPeerResourcesByIp = ({ ip }) => {
-    return data.find((resource) => resource.ip === ip);
+export const getList = () => {
+    return data;
+};
+
+// get by hash
+export const getResource = ({ hash }) => {
+    const resourceLocations = [];
+    data.forEach((client) => {
+        const foundResource = client.resources.find(
+            (cr) => cr.content === hash
+        );
+        if (foundResource) {
+            resourceLocations.push(foundResource.ip);
+        }
+    });
+    return resourceLocations;
 };
 
 export const deletePeer = ({ ip }) => {
     const peer = data.findIndex((resource) => resource.ip === ip);
     if (peer > -1) {
         data.splice(peer, 1);
+        console.log(
+            `Cliente com ip ${ip} excluído, pois não enviou heartbeat há mais de 10 segundos.`
+        );
     }
     return data;
 };

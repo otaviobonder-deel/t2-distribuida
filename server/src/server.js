@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes.js';
+import { heartbeat } from './controllers/heartbeat.js';
 
 const app = express();
 const PORT = 8080;
@@ -9,4 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routes);
 
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// register heartbeat
+setInterval(() => {
+    heartbeat();
+}, 5000);
+
+app.listen(PORT, '0.0.0.0', () =>
+    console.log(`🚀 Server running on port ${PORT}`)
+);
