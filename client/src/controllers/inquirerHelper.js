@@ -31,10 +31,11 @@ export const inquirerHelper = async () => {
                     );
                 });
             });
-            await inquirerHelper();
+            inquirerHelper();
             break;
         case 'download':
             await downloadInquirer();
+            inquirerHelper();
             break;
         case 'exit':
             console.log(chalk.green('Finalizando cliente!'));
@@ -58,7 +59,5 @@ const downloadInquirer = async () => {
         message: 'Selecione o arquivo que deseja baixar:',
         choices: data.find((c) => c.ip === client.action).resources,
     });
-
-    console.log(client, file);
     downloadFile({ file: file.file, host: client.action });
 };

@@ -36,6 +36,6 @@ try {
     log(chalk.green('Função heartbeat registrada com sucesso!'));
     await inquirerHelper();
 } catch (e) {
-    chalk.red(`Algo falou: ${e.message}`);
+    chalk.red(`Algo falhou: ${e.message}`);
     process.exit(1);
 }
