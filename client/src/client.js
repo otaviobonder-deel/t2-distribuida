@@ -2,7 +2,6 @@ import dotenv from 'dotenv/config.js';
 import clear from 'clear';
 import chalk from 'chalk';
 import figlet from 'figlet';
-
 import {
     heartbeat,
     registerClient,
