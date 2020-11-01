@@ -12,7 +12,7 @@ export const getList = () => {
 };
 
 // get by hash
-export const getResource = ({ hash }) => {
+export const getResource = ({ name }) => {
     const resourceLocations = [];
     data.forEach((client) => {
         const foundResource = client.resources.find(

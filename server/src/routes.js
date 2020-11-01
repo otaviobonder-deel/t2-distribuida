@@ -24,11 +24,7 @@ routes.post('/register', (req, res) => {
 routes.get('/list', (req, res) => {
     try {
         const list = getList();
-        const response = [];
-        list.forEach((client) =>
-            client.resources.forEach((resource) => response.push(resource.name))
-        );
-        res.status(200).send(response);
+        res.status(200).send(list);
     } catch (e) {
         res.status(400).send(e.message);
     }
