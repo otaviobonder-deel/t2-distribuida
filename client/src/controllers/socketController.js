@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
 
 export const downloadFile = ({ file, host }) => {
     log(chalk.yellow('Criando uma conexão socket com o outro client...'));
-    const socket = socketClient(`ws://${host}:3000`);
+    const socket = socketClient(`http://${host}:3000`);
     socket.on('connect', () => {
         if (socket.connected) {
             log(chalk.green('Conexão estabelecida!'));
