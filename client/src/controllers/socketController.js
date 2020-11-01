@@ -3,6 +3,7 @@ import ss from 'socket.io-stream';
 import chalk from 'chalk';
 import fs from 'fs';
 import Socketio from 'socket.io';
+import { inquirerHelper } from './inquirerHelper.js';
 
 const log = console.log;
 
@@ -10,7 +11,7 @@ const io = new Socketio(3000, { serveClient: false });
 
 io.on('connection', (socket) => {
     ss(socket).on('fileDownload', (stream, data) => {
-        stream.pipe(fs.createReadStream(`resources/${data.name}`));
+        fs.createReadStream(`resources/${data.name}`).pipe(stream);
     });
 });
 
@@ -36,8 +37,10 @@ export const downloadFile = ({ file, host }) => {
             log(chalk.yellow('Encerrando conexão com o outro client...'));
             socket.close();
             log(chalk.green('Conexão encerrada!'));
+            inquirerHelper();
         } else {
             log(chalk.red('Falha de conexão via socket'));
+            inquirerHelper();
         }
     });
 };

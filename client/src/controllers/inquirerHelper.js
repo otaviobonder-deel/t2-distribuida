@@ -35,7 +35,6 @@ export const inquirerHelper = async () => {
             break;
         case 'download':
             await downloadInquirer();
-            inquirerHelper();
             break;
         case 'exit':
             console.log(chalk.green('Finalizando cliente!'));
