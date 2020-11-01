@@ -5,6 +5,8 @@ import fs from 'fs';
 import Socketio from 'socket.io';
 import { inquirerHelper } from './inquirerHelper.js';
 
+ss.forceBase64 = true;
+
 const log = console.log;
 
 const io = new Socketio(3000, { serveClient: false });
