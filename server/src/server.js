@@ -3,7 +3,7 @@ import routes from './routes.js';
 import { heartbeat } from './controllers/heartbeat.js';
 
 const app = express();
-const PORT = 8080;
+const PORT = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
