@@ -8,10 +8,12 @@ const log = console.log;
 
 const io = new Socketio(3000, { serveClient: false });
 
-io.on('fileDownload', ({ file }) => {
-    const fileReaded = fs.readFileSync(`resources/${file}`);
-    const base64File = new Buffer(fileReaded).toString('base64');
-    io.emit('file', base64File);
+io.on('connect', (ss) => {
+    ss.on('fileDownload', (file) => {
+        const fileReaded = fs.readFileSync(`resources/${file}`);
+        const base64File = new Buffer(fileReaded).toString('base64');
+        io.emit('file', base64File);
+    });
 });
 
 export const downloadFile = ({ file, host }) => {
