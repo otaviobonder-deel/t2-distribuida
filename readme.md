@@ -29,6 +29,8 @@ Para rodar os clientes, basta entrar na pasta `client` e editar o arquivo .env, 
 
 **Importante**, cada cliente deve ser executado em uma VM ou máquina diferente. Dois clientes não podem executar na mesma máquina ou VM, nem em uma máquina que já esteja executando o servidor.
 
+Cada cliente necessita ter uma pasta `resources` na raiz do cliente. Nesta pasta conterá os arquivos que poderão ser enviados a outros clientes.
+
 Após, basta instalar as dependências do projeto:
 
 ```
