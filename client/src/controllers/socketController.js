@@ -34,7 +34,8 @@ export const downloadFile = ({ file, host }) => {
         }
     });
     socket.on('file', (data) => {
-        console.log(data);
+        const buff = Buffer.from(data, 'base64');
+        fs.writeFileSync(`resources/${file}`, buff, { flag: 'w' });
         log(
             chalk.green(
                 'Arquivo baixado com sucesso e salvo na pasta resources'
